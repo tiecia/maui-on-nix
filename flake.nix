@@ -1,5 +1,5 @@
 {
-  description = "Brightlink AV Control app";
+  description = "basic dotnet MAUI shell";
   
   inputs = {
 
