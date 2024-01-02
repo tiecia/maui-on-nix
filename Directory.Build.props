@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- this does not affect the issue -->
+    <!--<MauiVersion>8.0.3</MauiVersion>-->
+  </PropertyGroup>
+</Project>
