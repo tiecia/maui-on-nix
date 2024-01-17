@@ -3,6 +3,7 @@
 # RUN apk add build-base
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build-env
+# SHELL ["/bin/bash", "-c"]
 RUN apt update
 RUN apt install -y openjdk-11-jdk unzip 
 
@@ -25,9 +26,18 @@ RUN yes | sdkmanager --licenses
 RUN sdkmanager "platform-tools"
 RUN sdkmanager "build-tools;34.0.0" "platforms;android-34"
 
+#install workload into home dir 
+ENV DOTNET_ROOT=/usr/share/dotnet
+RUN for i in $DOTNET_ROOT/sdk-manifests/*; do \
+          i=$(basename $i); \
+          i=$(echo "$i" | sed 's/-.*//'); \
+          mkdir -p $DOTNET_ROOT/metadata/workloads/$i; \
+          touch $DOTNET_ROOT/metadata/workloads/$i/userlocal; \
+        done
 
-RUN dotnet workload install maui-android --ignore-failed-sources
+RUN dotnet workload install android maui-android --ignore-failed-sources
 
+RUN ls -al $HOME/.dotnet/sdk-manifests 
 
 FROM build-env
 ENV ANDROID_SDK_ROOT=/usr/lib/android-sdk
