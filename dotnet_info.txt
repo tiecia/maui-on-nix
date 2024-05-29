@@ -1,0 +1,46 @@
+.NET SDK:
+ Version:           8.0.204
+ Commit:            c338c7548c
+ Workload version:  8.0.200-manifests.9f663350
+
+Runtime Environment:
+ OS Name:     nixos
+ OS Version:  24.11
+ OS Platform: Linux
+ RID:         linux-x64
+ Base Path:   /nix/store/h1cjcq31jnhl5g8z7vg16k1vhmyadani-dotnet-sdk-8.0.204/sdk/8.0.204/
+
+.NET workloads installed:
+ [maui-android]
+   Installation Source: SDK 8.0.200
+   Manifest Version:    8.0.3/8.0.100
+   Manifest Path:       /nix/store/zxq761i5cj7d9ainch7d3g35w2b9c4sj-dotnet-core-combined/sdk-manifests/8.0.100/microsoft.net.sdk.maui/8.0.3/WorkloadManifest.json
+   Install Type:        FileBased
+
+
+Host:
+  Version:      8.0.4
+  Architecture: x64
+  Commit:       2d7eea2529
+
+.NET SDKs installed:
+  8.0.204 [/nix/store/zxq761i5cj7d9ainch7d3g35w2b9c4sj-dotnet-core-combined/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 8.0.4 [/nix/store/zxq761i5cj7d9ainch7d3g35w2b9c4sj-dotnet-core-combined/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 8.0.4 [/nix/store/zxq761i5cj7d9ainch7d3g35w2b9c4sj-dotnet-core-combined/shared/Microsoft.NETCore.App]
+
+Other architectures found:
+  None
+
+Environment variables:
+  DOTNET_ROOT       [/nix/store/zxq761i5cj7d9ainch7d3g35w2b9c4sj-dotnet-core-combined]
+
+global.json file:
+  Not found
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download

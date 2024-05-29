@@ -22,6 +22,7 @@ let
 in mkShell {
   packages = [
       dotnet-combined
+      tree
   ];
   DOTNET_ROOT = "${dotnet-combined}";
 }
