@@ -4,7 +4,7 @@
   inputs = {
 
     nixpkgs = {
-      url = "github:anpin/nixpkgs?ref=next";
+      url = "github:nixos/nixpkgs?ref=master";
     };
   };
 
