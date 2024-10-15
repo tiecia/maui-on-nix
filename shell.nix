@@ -23,25 +23,25 @@ let
            touch $out/metadata/workloads/''${i/-*}/userlocal
         done
       '';
-    # append userlocal sctipr to postInstall phase
-    postInstallMap = (finalAttrs: previousAttrs: {
+    # append userlocal sctipt to postInstall phase
+    postInstallUserlocal = (finalAttrs: previousAttrs: {
         postInstall = (previousAttrs.postInstall or '''') + userlocal;
     });
-    # append userlocal sctipr to postBuild phase
-    postBuildMap = (finalAttrs: previousAttrs: {
+    # append userlocal sctipt to postBuild phase
+    postBuildUserlocal = (finalAttrs: previousAttrs: {
         postBuild = (previousAttrs.postBuild or '''') + userlocal;
     });
 
     # use this if you don't need multiple SDK versions
-    # dotnet-combined = dotnetCorePackages.sdk_9_0.overrideAttrs postInstallMap)
+    # dotnet-combined = dotnetCorePackages.sdk_9_0.overrideAttrs postInstallUserlocal)
     
     # or use this if you ought to have multiple SDK versions
     # this will create userlocal files in both $DOTNET_ROOT and dotnet bin realtive path 
     dotnet-combined = (with dotnetCorePackages; 
       combinePackages [
-        (sdk_9_0.overrideAttrs postInstallMap)
-        (sdk_8_0.overrideAttrs postInstallMap)
-      ]).overrideAttrs postBuildMap;
+        (sdk_9_0.overrideAttrs postInstallUserlocal)
+        (sdk_8_0.overrideAttrs postInstallUserlocal)
+      ]).overrideAttrs postBuildUserlocal;
 
 in mkShell {
   packages = [
