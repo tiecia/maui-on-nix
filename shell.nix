@@ -33,15 +33,15 @@ let
     });
 
     # use this if you don't need multiple SDK versions
-    # dotnet-combined = dotnetCorePackages.sdk_9_0.overrideAttrs postInstallUserlocal)
+    dotnet-combined = dotnetCorePackages.sdk_9_0.unwrapped.overrideAttrs postInstallUserlocal;
     
     # or use this if you ought to have multiple SDK versions
     # this will create userlocal files in both $DOTNET_ROOT and dotnet bin realtive path 
-    dotnet-combined = (with dotnetCorePackages; 
-      combinePackages [
-        (sdk_9_0.overrideAttrs postInstallUserlocal)
-        (sdk_8_0.overrideAttrs postInstallUserlocal)
-      ]).overrideAttrs postBuildUserlocal;
+    # dotnet-combined = (with dotnetCorePackages; 
+    #   combinePackages [
+    #     (sdk_9_0.unwrapped.overrideAttrs postInstallUserlocal)
+    #     (sdk_8_0.unwrapped.overrideAttrs postInstallUserlocal)
+    #   ]).overrideAttrs postBuildUserlocal;
 
 in mkShell {
   packages = [
