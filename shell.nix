@@ -11,16 +11,17 @@ let
             platforms-android-35
             platforms-android-34
           ]);
+    dotnet-root="share/dotnet";
     # This is needed to install workload in $HOME
     # https://discourse.nixos.org/t/dotnet-maui-workload/20370/2
     userlocal =  ''
-         for i in $out/sdk/*; do
+         for i in $out/${dotnet-root}/sdk/*; do
            i=$(basename $i)
            length=$(printf "%s" "$i" | wc -c)
            substring=$(printf "%s" "$i" | cut -c 1-$(expr $length - 2))
            i="$substring""00"
-           mkdir -p $out/metadata/workloads/''${i/-*}
-           touch $out/metadata/workloads/''${i/-*}/userlocal
+           mkdir -p $out/${dotnet-root}/metadata/workloads/''${i/-*}
+           touch $out/${dotnet-root}/metadata/workloads/''${i/-*}/userlocal
         done
       '';
     # append userlocal sctipt to postInstall phase
@@ -53,7 +54,7 @@ in mkShell {
       aapt
       llvm_18
   ];
-  DOTNET_ROOT = "${dotnet-combined}";
+  DOTNET_ROOT = "${dotnet-combined}/${dotnet-root}";
   ANDROID_HOME = "${android-sdk}/share/android-sdk";
   ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
   JAVA_HOME = jdk17.home;
